@@ -1,4 +1,5 @@
 const time = document.querySelector("#time");
+const timeLabel = document.querySelector("#timeLabel");
 const play = document.querySelector("#play");
 const pause = document.querySelector("#pause");
 const stop = document.querySelector("#stop");
@@ -10,6 +11,10 @@ let timeoutID;
 let isWorkDone = false;
 
 setSessionTime(sessionTime, breakTime);
+
+
+
+
 
 play.addEventListener('click', () => {
 	timeoutID = setInterval(showTimeRemaining, 1000);
@@ -26,6 +31,10 @@ reset.addEventListener('click', () => {
 	stopTimer();
 	setSessionTime(25, 5);
 });
+
+
+
+
 
 function showTimeRemaining() {
 	time.innerHTML = convertToMinSec(timeRemaining);
@@ -65,9 +74,11 @@ function stopTimer() {
 function setSessionTime(workTime, playTime) {
 	if (isWorkDone) {
 		time.innerHTML = convertToMinSec(playTime * 60);
+		timeLabel.innerHTML = "Rest Session";
 		timeRemaining = playTime * 60;
 	} else {
 		time.innerHTML = convertToMinSec(workTime * 60);
+		timeLabel.innerHTML = "Work Session";
 		timeRemaining = workTime * 60;
 	}
 }
