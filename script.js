@@ -16,9 +16,7 @@ setSessionTime(sessionTime, breakTime);
 
 
 
-play.addEventListener('click', () => {
-	timeoutID = setInterval(showTimeRemaining, 1000);
-});
+play.addEventListener('click', startTimer);
 
 pause.addEventListener('click', stopTimer);
 
@@ -36,6 +34,10 @@ reset.addEventListener('click', () => {
 
 
 
+function startTimer() {
+	timeoutID = setInterval(showTimeRemaining, 1000);
+}
+
 function showTimeRemaining() {
 	time.innerHTML = convertToMinSec(timeRemaining);
 	timeRemaining--;
@@ -50,6 +52,7 @@ function showTimeRemaining() {
 		}
 
 		setSessionTime(sessionTime, breakTime);
+		startTimer();
 	}
 }
 
