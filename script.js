@@ -21,11 +21,13 @@ play.addEventListener('click', startTimer);
 pause.addEventListener('click', stopTimer);
 
 stop.addEventListener('click', () => {
+	isWorkDone = false;
 	stopTimer();
 	setSessionTime(sessionTime, breakTime);
 });
 
 reset.addEventListener('click', () => {
+	isWorkDone = false;
 	stopTimer();
 	setSessionTime(25, 5);
 });
@@ -42,7 +44,7 @@ function showTimeRemaining() {
 	time.innerHTML = convertToMinSec(timeRemaining);
 	timeRemaining--;
 
-	if (timeRemaining < 0) {
+	if (timeRemaining < -1) {
 		stopTimer();
 
 		if (isWorkDone) {
