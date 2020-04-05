@@ -4,13 +4,21 @@ const play = document.querySelector("#play");
 const pause = document.querySelector("#pause");
 const stop = document.querySelector("#stop");
 const reset = document.querySelector("#reset");
+const userSession = document.querySelector("#userSession");
+const userBreak = document.querySelector("#userBreak");
+const upBtns = nodeToArr(document.querySelectorAll(".adjustUp"));
+const downBtns = nodeToArr(document.querySelectorAll(".adjustDown"));
+
 let timeRemaining;
-let sessionTime = 0.5;
-let breakTime = 0.25;
+let sessionTime = 25;
+let breakTime = 5;
 let timeoutID;
 let isWorkDone = false;
 
 setSessionTime(sessionTime, breakTime);
+
+setUserTime(sessionTime, breakTime);
+
 
 
 
@@ -29,8 +37,44 @@ stop.addEventListener('click', () => {
 reset.addEventListener('click', () => {
 	isWorkDone = false;
 	stopTimer();
-	setSessionTime(25, 5);
+	sessionTime = 25;
+	breakTime = 5;
+	setSessionTime(sessionTime, breakTime);
+	setUserTime(sessionTime, breakTime);
 });
+
+upBtns[0].addEventListener('click', () => {
+	if (sessionTime < 60) {
+		sessionTime++;
+		setSessionTime(sessionTime, breakTime);
+		setUserTime(sessionTime, breakTime);
+	}
+});
+
+upBtns[1].addEventListener('click', () => {
+	if (breakTime < 60) {
+		breakTime++;
+		setSessionTime(sessionTime, breakTime);
+		setUserTime(sessionTime, breakTime);	
+	}
+});
+
+downBtns[0].addEventListener('click', () => {
+	if (sessionTime > 1) {
+		sessionTime--;
+		setSessionTime(sessionTime, breakTime);
+		setUserTime(sessionTime, breakTime);
+	}
+});
+
+downBtns[1].addEventListener('click', () => {
+	if (breakTime > 1) {
+		breakTime--;
+		setSessionTime(sessionTime, breakTime);
+		setUserTime(sessionTime, breakTime);
+	}
+});
+
 
 
 
@@ -86,4 +130,18 @@ function setSessionTime(workTime, playTime) {
 		timeLabel.innerHTML = "Work Session";
 		timeRemaining = workTime * 60;
 	}
+}
+
+function setUserTime(workTime, playTime) {
+	userSession.innerHTML = workTime;
+	userBreak.innerHTML = playTime;
+}
+
+function nodeToArr(nodelist) {
+	let arr = [];
+	for (let i = 0; i < nodelist.length; i++) {
+		arr[i] = nodelist[i];
+	}
+
+	return arr;
 }
