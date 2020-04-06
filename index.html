@@ -8,25 +8,23 @@
 		<h1>Pomodoro Timer</h1>
 		<h2 id='timeLabel'></h2>
 		<h2 id='time'></h2>
+		
+		<div class='buttons'>
+			<button id='play'>Play</button>
+			<button id='pause'>Pause</button>
+			<button id='stop'>Stop</button>
+			<button id='reset'>Reset</button>
+		</div>
 
-		<button id='play'>Play</button>
-		<button id='pause'>Pause</button>
-		<button id='stop'>Stop</button>
-		<button id='reset'>Reset</button>
-
-		<div>
-			<div class='selectTime'>
-				<h3>Work</h3>
-				<p class='adjustUp'>Up</p>
-				<p id='userSession'></p>
-				<p class='adjustDown'>Down</p>
-			</div>
-			<div class='selectTime'>
-				<h3>Break</h3>
-				<p class='adjustUp'>Up</p>
-				<p id='userBreak'></p>
-				<p class='adjustDown'>Down</p>
-			</div>
+		<div class='container'>
+			<h3 class='item-a'>Work</h3>
+			<h3 class='item-b'>Break</h3>
+			<p class='adjustUp'><</p>
+			<p id='userSession'></p>
+			<p class='adjustDown'>></p>
+			<p class='adjustUp'><</p>
+			<p id='userBreak'></p>
+			<p class='adjustDown'>></p>
 		</div>
 
 		<script type="text/javascript" src="script.js"></script>
