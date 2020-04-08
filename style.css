@@ -7,6 +7,7 @@ body {
 
 h1 {
 	font-size: 2.5em;
+	margin-bottom: 20px;
 }
 
 h2 {
@@ -80,6 +81,9 @@ button {
 }
 
 #timeLabel {
-	margin-bottom: 15px;
+	width: 45%;
+	margin: 0 auto 15px auto;
+	padding-top: 15px;
+	border-top: #a8a8a8 solid 1px;
 }
 
