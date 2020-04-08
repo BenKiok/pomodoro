@@ -19,12 +19,12 @@ setSessionTime(sessionTime, breakTime);
 
 setUserTime(sessionTime, breakTime);
 
+activatePlay();
 
 
 
 
 
-play.addEventListener('click', startTimer);
 
 pause.addEventListener('click', stopTimer);
 
@@ -92,6 +92,7 @@ downBtns[1].addEventListener('click', () => {
 
 function startTimer() {
 	timeoutID = setInterval(showTimeRemaining, 1000);
+	play.removeEventListener('click', startTimer);
 }
 
 function showTimeRemaining() {
@@ -128,6 +129,7 @@ function convertToMinSec(sec) {
 
 function stopTimer() {
 	clearInterval(timeoutID);
+	play.addEventListener('click', startTimer);
 }
 
 function setSessionTime(workTime, playTime) {
@@ -154,4 +156,8 @@ function nodeToArr(nodelist) {
 	}
 
 	return arr;
+}
+
+function activatePlay() {
+	play.addEventListener('click', startTimer);
 }
