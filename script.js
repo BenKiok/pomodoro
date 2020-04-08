@@ -12,7 +12,7 @@ const downBtns = nodeToArr(document.querySelectorAll(".adjustDown"));
 let timeRemaining;
 let sessionTime = 25;
 let breakTime = 5;
-let timeoutID;
+let timeoutID = 0;
 let isWorkDone = false;
 
 setSessionTime(sessionTime, breakTime);
@@ -31,12 +31,14 @@ pause.addEventListener('click', stopTimer);
 stop.addEventListener('click', () => {
 	isWorkDone = false;
 	stopTimer();
+	timeoutID = 0;
 	setSessionTime(sessionTime, breakTime);
 });
 
 reset.addEventListener('click', () => {
 	isWorkDone = false;
 	stopTimer();
+	timeoutID = 0;
 	sessionTime = 25;
 	breakTime = 5;
 	setSessionTime(sessionTime, breakTime);
@@ -44,34 +46,42 @@ reset.addEventListener('click', () => {
 });
 
 upBtns[0].addEventListener('click', () => {
-	if (sessionTime < 60) {
-		sessionTime++;
-		setSessionTime(sessionTime, breakTime);
-		setUserTime(sessionTime, breakTime);
+	if (!timeoutID) {
+		if (sessionTime < 60) {
+			sessionTime++;
+			setSessionTime(sessionTime, breakTime);
+			setUserTime(sessionTime, breakTime);
+		}
 	}
 });
 
 upBtns[1].addEventListener('click', () => {
-	if (breakTime < 60) {
-		breakTime++;
-		setSessionTime(sessionTime, breakTime);
-		setUserTime(sessionTime, breakTime);	
+	if (!timeoutID) {
+		if (breakTime < 60) {
+			breakTime++;
+			setSessionTime(sessionTime, breakTime);
+			setUserTime(sessionTime, breakTime);	
+		}
 	}
 });
 
 downBtns[0].addEventListener('click', () => {
-	if (sessionTime > 1) {
-		sessionTime--;
-		setSessionTime(sessionTime, breakTime);
-		setUserTime(sessionTime, breakTime);
+	if (!timeoutID) {
+		if (sessionTime > 1) {
+			sessionTime--;
+			setSessionTime(sessionTime, breakTime);
+			setUserTime(sessionTime, breakTime);
+		}
 	}
 });
 
 downBtns[1].addEventListener('click', () => {
-	if (breakTime > 1) {
-		breakTime--;
-		setSessionTime(sessionTime, breakTime);
-		setUserTime(sessionTime, breakTime);
+	if (!timeoutID) {
+		if (breakTime > 1) {
+			breakTime--;
+			setSessionTime(sessionTime, breakTime);
+			setUserTime(sessionTime, breakTime);
+		}
 	}
 });
 
