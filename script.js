@@ -85,10 +85,10 @@ function startTimer() {
 }
 
 function showTimeRemaining() {
-	time.innerHTML = convertToMinSec(timeRemaining);
 	timeRemaining--;
+	time.innerHTML = convertToMinSec(timeRemaining);
 
-	if (timeRemaining < -1) {
+	if (timeRemaining < 0) {
 		stopTimer();
 
 		if (isWorkDone) {
